@@ -1,0 +1,1 @@
+Create table as query1
