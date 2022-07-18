@@ -1,5 +1,5 @@
 CREATE TABLE query1 AS 
-SELECT g.name, COUNT(1) AS moviecount
+SELECT g.name, COUNT(*) AS moviecount
 FROM hasagenre
 JOIN genres g USING (genreid)
 GROUP BY name;
@@ -13,11 +13,11 @@ JOIN ratings r USING (movieid)
 GROUP BY g.name;
 
 CREATE TABLE query3 AS
-SELECT m.name AS title, COUNT(1) AS countofratings
+SELECT m.name AS title, COUNT(*) AS countofratings
 FROM movies m
 JOIN ratings r USING (movieid)
 GROUP BY m.name
-HAVING COUNT(1) > 9;
+HAVING COUNT(*) > 9;
 
 CREATE TABLE query4 AS 
 SELECT m.movieid AS movieid, m.name AS title
@@ -66,8 +66,8 @@ USING (movieid);
 
 CREATE TABLE query9 AS
 SELECT movieid, rating
-FROM ratings r
-WHERE r.userid = '1';
+FROM ratings
+WHERE ratings.userid = :v1;
 
 
 
